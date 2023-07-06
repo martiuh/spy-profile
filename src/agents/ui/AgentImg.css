@@ -1,0 +1,7 @@
+.agent-img {
+  /*
+  This makes the image to look a little bit better
+  since the source image is very small
+  */
+  image-rendering: pixelated;
+}
