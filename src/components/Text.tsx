@@ -2,6 +2,7 @@ import cn from "classnames";
 import { WithReactChildren } from "../lib/types/react";
 
 const sizes = {
+  sm: "text-sm",
   md: "text-base",
   xl: "text-xl",
   "3xl": "text-3xl",
@@ -9,8 +10,15 @@ const sizes = {
 
 export type FontSizeType = keyof typeof sizes;
 
+const weights = {
+  bold: "font-bold",
+};
+
+export type FontWeightsType = keyof typeof weights;
+
 export interface TextProps extends React.HTMLAttributes<HTMLParagraphElement> {
   size?: FontSizeType;
+  weight?: FontWeightsType;
 }
 
 function getFont(props: TextProps) {
@@ -21,6 +29,9 @@ function getFont(props: TextProps) {
     case "3xl": {
       return sizes["3xl"];
     }
+    case "sm": {
+      return sizes.sm;
+    }
     case "md":
     default: {
       return sizes.md;
@@ -28,9 +39,20 @@ function getFont(props: TextProps) {
   }
 }
 
+function getWeight(props: TextProps) {
+  switch (props.weight) {
+    case "bold": {
+      return weights.bold;
+    }
+    default: {
+      return null;
+    }
+  }
+}
+
 function getTextClass(props: WithReactChildren<TextProps>) {
   const { className } = props;
-  return cn(className, getFont(props));
+  return cn(className, getFont(props), getWeight(props), "text-emerald-100");
 }
 
 export function Text(props: WithReactChildren<TextProps>) {
