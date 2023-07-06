@@ -24,11 +24,10 @@ interface AgentResponse {
   eyeColor: string;
   picture: {
     large: string;
-    thumbnail: string;
   };
 }
 
-interface Agent extends AgentResponse {
+export interface Agent extends AgentResponse {
   eyeColor: string;
 }
 
