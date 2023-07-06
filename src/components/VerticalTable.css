@@ -1,0 +1,9 @@
+.vt-item {
+  display: flex;
+  flex: 1 1 50%;
+}
+
+.vt-item__row {
+  display: flex;
+  flex: 1 1 100%;
+}
