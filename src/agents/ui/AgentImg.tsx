@@ -13,7 +13,7 @@ export function AgentImg(props: AgentImgProps) {
   const { src, alt } = props;
 
   return (
-    <div>
+    <div className="w-72">
       <img
         className="w-full object-center rounded-sm agent-img"
         src={src}
