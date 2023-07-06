@@ -3,23 +3,23 @@ import { WithReactChildren } from "../lib/types/react";
 
 const sizes = {
   md: "text-base",
-  lg: "text-lg",
   xl: "text-xl",
+  "3xl": "text-3xl",
 };
 
 export type FontSizeType = keyof typeof sizes;
 
-export interface TextProps {
+export interface TextProps extends React.HTMLAttributes<HTMLParagraphElement> {
   size?: FontSizeType;
 }
 
 function getFont(props: TextProps) {
   switch (props.size) {
-    case "lg": {
-      return sizes.lg;
-    }
     case "xl": {
       return sizes.xl;
+    }
+    case "3xl": {
+      return sizes["3xl"];
     }
     case "md":
     default: {
@@ -29,7 +29,8 @@ function getFont(props: TextProps) {
 }
 
 function getTextClass(props: WithReactChildren<TextProps>) {
-  return cn(getFont(props));
+  const { className } = props;
+  return cn(className, getFont(props));
 }
 
 export function Text(props: WithReactChildren<TextProps>) {
@@ -40,8 +41,8 @@ export function H1(props: WithReactChildren<TextProps>) {
   return <h1 className={getTextClass(props)} {...props} />;
 }
 
-H2.defaultProps = {
-  size: "xl",
+H1.defaultProps = {
+  size: "3xl",
 };
 
 export function H2(props: WithReactChildren<TextProps>) {
@@ -49,5 +50,5 @@ export function H2(props: WithReactChildren<TextProps>) {
 }
 
 H2.defaultProps = {
-  size: "lg",
+  size: "xl",
 };
