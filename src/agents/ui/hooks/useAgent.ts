@@ -8,6 +8,7 @@ export function useAgent() {
   });
 
   return {
+    getNextAgent: query.refetch,
     agent: query.data,
   };
 }
