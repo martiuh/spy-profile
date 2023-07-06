@@ -34,11 +34,15 @@ function getTextClass(props: WithReactChildren<TextProps>) {
 }
 
 export function Text(props: WithReactChildren<TextProps>) {
-  return <p className={getTextClass(props)}>{props.children}</p>;
+  return (
+    <p {...props} className={getTextClass(props)}>
+      {props.children}
+    </p>
+  );
 }
 
 export function H1(props: WithReactChildren<TextProps>) {
-  return <h1 className={getTextClass(props)} {...props} />;
+  return <h1 {...props} className={getTextClass(props)} />;
 }
 
 H1.defaultProps = {
@@ -46,7 +50,7 @@ H1.defaultProps = {
 };
 
 export function H2(props: WithReactChildren<TextProps>) {
-  return <h2 className={getTextClass(props)} {...props} />;
+  return <h2 {...props} className={getTextClass(props)} />;
 }
 
 H2.defaultProps = {
