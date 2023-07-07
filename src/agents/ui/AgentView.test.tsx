@@ -8,6 +8,7 @@ import {
   waitForElementToBeRemoved,
   within,
 } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { AgentView } from "./AgentView";
 import { AGENT_API } from "../repository/agentRepository";
 import { fabricateAgentResponse } from "../domain/AgentFactory";
@@ -68,17 +69,29 @@ describe("AgentView", () => {
     expect(codenameTag.getByText(/codename/i)).toBeInTheDocument();
     expect(codenameTag.getByText(agent.code)).toBeInTheDocument();
   });
-  it.skip("calls next asset", async () => {
+  it("calls next asset", async () => {
     const response1 = getRandomAgentHandler();
     worker.use(response1.handler);
 
     setup();
 
     const agent1 = presentAgentView(response1.user);
+
     await waitFor(() =>
-      expect(screen.findByText(agent1.fullName)).toBeInTheDocument()
+      expect(screen.getByText(agent1.fullName)).toBeInTheDocument()
     );
 
+    worker.resetHandlers();
+    const response2 = getRandomAgentHandler();
+    worker.use(response2.handler);
+
     const button = screen.getByRole("button");
+
+    userEvent.click(button);
+
+    const agent2 = presentAgentView(response2.user);
+    await waitFor(() =>
+      expect(screen.getByText(agent2.fullName)).toBeInTheDocument()
+    );
   });
 });
