@@ -23,6 +23,7 @@ export function AgentView() {
     eyeColor,
     sex,
     address,
+    time,
   } = presentAgentView(agent);
 
   const vtRows: VTItemType[] = [
@@ -37,6 +38,10 @@ export function AgentView() {
     {
       header: "Eyes",
       value: eyeColor,
+    },
+    {
+      header: "Time",
+      value: time,
     },
     {
       header: "Address",
