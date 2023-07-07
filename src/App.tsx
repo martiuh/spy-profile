@@ -9,7 +9,9 @@ qc.fetchQuery(getRandomAgent.key, getRandomAgent);
 export default function App() {
   return (
     <QueryClientProvider client={qc}>
-      <AgentView />
+      <div className="bg-gradient-to-r from-base-900 to-base-800 flex flex-col items-center h-screen">
+        <AgentView />
+      </div>
     </QueryClientProvider>
   );
 }
