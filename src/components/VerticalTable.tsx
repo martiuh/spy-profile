@@ -9,9 +9,7 @@ import { Text } from "./Text";
 export function VerticalTable(
   props: WithReactChildren<React.HTMLAttributes<HTMLTableElement>>
 ) {
-  return (
-    <table {...props} className={(cn(props.className), "flex flex-wrap")} />
-  );
+  return <div {...props} className={(cn(props.className), "flex flex-wrap")} />;
 }
 
 export type VTItemType = {
@@ -30,15 +28,17 @@ export function VTItem(props: VTItemProps) {
   return (
     <div
       className={cn(
-        "vt-item flex items-center uppercase p-1 border-t-2 border-t-emerald-200 border-opacity-40 h-10",
+        "vt-item flex items-center uppercase px-1 py-2 border-t-[1px] border-t-neutral-50 h-14",
         fullRow && "vt-item__row"
       )}
     >
       <span className="vt-item__header mr-2" role="columnheader">
-        <Text weight="bold">{header}</Text>
+        <Text weight="bold" className="text-neutral-200">
+          {header}
+        </Text>
       </span>
       <span className="vt-item__value" role="cell">
-        <Text>{value}</Text>
+        <Text className="text-neutral-300">{value}</Text>
       </span>
     </div>
   );
