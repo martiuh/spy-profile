@@ -2,7 +2,7 @@ import type { Agent } from "../../domain/Agent";
 
 function formatDate(date: string) {
   const d = new Date(date);
-  return `${d.getDay()}/${d.getMonth()}/${d.getFullYear()}`;
+  return `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
 }
 
 export function presentAgentView(agent: Agent) {
