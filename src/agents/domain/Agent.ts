@@ -8,10 +8,10 @@ interface AgentResponse {
     city: string;
     state: string;
     country: string;
-  };
-  timezone: {
-    offset: string;
-    description: string;
+    timezone: {
+      offset: string;
+      description: string;
+    };
   };
   login: {
     username: string;
