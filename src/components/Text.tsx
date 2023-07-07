@@ -52,7 +52,7 @@ function getWeight(props: TextProps) {
 
 function getTextClass(props: WithReactChildren<TextProps>) {
   const { className } = props;
-  return cn(className, getFont(props), getWeight(props), "text-emerald-100");
+  return cn(className, getFont(props), getWeight(props), "text-neutral-100");
 }
 
 export function Text(props: WithReactChildren<TextProps>) {
