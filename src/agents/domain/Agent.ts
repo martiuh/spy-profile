@@ -21,15 +21,13 @@ interface AgentResponse {
     date: string;
     age: number;
   };
-  eyeColor: string;
   picture: {
     large: string;
   };
+  eyeColor?: string;
 }
 
-export interface Agent extends AgentResponse {
-  eyeColor: string;
-}
+export interface Agent extends AgentResponse {}
 
 interface ApiResponse {
   results: AgentResponse[];
@@ -37,8 +35,12 @@ interface ApiResponse {
 
 const eyeColors = ["blue", "brown", "green", "hazel", "grey"];
 
+export function guessEyeColor() {
+  return faker.helpers.arrayElement(eyeColors);
+}
+
 export function mapApiResponseToAgent(response: ApiResponse): Agent {
   const [agent] = response.results;
-  const eyeColor = faker.helpers.arrayElement(eyeColors);
-  return { ...agent, eyeColor };
+  const eyeColor = agent?.eyeColor ?? guessEyeColor();
+  return { eyeColor, ...agent };
 }
