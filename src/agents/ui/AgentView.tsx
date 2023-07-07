@@ -62,10 +62,10 @@ export function AgentView() {
           <div
             className={`flex items-center uppercase absolute bottom-0 left-0 p-1 ml-2 mb-2  bg-opacity-70 bg-base-50 rounded-sm text-primary-800 max-w-[95%] overflow-hidden`}
           >
-            <Text size="sm" weight="bold" className="mr-2 text-inherit">
+            <Text size="sm" weight="bold" className="mr-2" color="inherit">
               codename
             </Text>
-            <Text className="text-inherit">{code}</Text>
+            <Text color="inherit">{code}</Text>
           </div>
           <div className="absolute top-0 left-0 w-full h-full border-4 border-neutral-300 bg-base-600 bg-opacity-10"></div>
         </div>

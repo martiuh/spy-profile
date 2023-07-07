@@ -16,9 +16,17 @@ const weights = {
 
 export type FontWeightsType = keyof typeof weights;
 
+const colors = {
+  neutral: "text-neutral-100",
+  inherit: "text-inherit",
+};
+
+export type FontWeightColor = keyof typeof colors;
+
 export interface TextProps extends React.HTMLAttributes<HTMLParagraphElement> {
   size?: FontSizeType;
   weight?: FontWeightsType;
+  color?: FontWeightColor;
 }
 
 function getFont(props: TextProps) {
@@ -50,9 +58,21 @@ function getWeight(props: TextProps) {
   }
 }
 
+function getColor(props: TextProps) {
+  switch (props.color) {
+    case "inherit": {
+      return colors.inherit;
+    }
+    case "neutral":
+    default: {
+      return colors.neutral;
+    }
+  }
+}
+
 function getTextClass(props: WithReactChildren<TextProps>) {
   const { className } = props;
-  return cn(className, getFont(props), getWeight(props), "text-neutral-100");
+  return cn(getColor(props), className, getFont(props), getWeight(props));
 }
 
 export function Text(props: WithReactChildren<TextProps>) {
