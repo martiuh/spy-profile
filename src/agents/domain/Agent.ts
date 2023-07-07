@@ -27,7 +27,7 @@ interface AgentResponse {
   eyeColor?: string;
 }
 
-export interface Agent extends AgentResponse {}
+export interface Agent extends Required<AgentResponse> {}
 
 interface ApiResponse {
   results: AgentResponse[];
